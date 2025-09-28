@@ -1,0 +1,154 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* Enhanced Multi-Color Business Design System - All colors MUST be HSL */
+
+/* Brand colors with more variety for better organization */
+:root {
+  /* Primary brand colors - Orange accents */
+  --brand-primary: 24 100% 60%;           /* Orange #FF7A00 */
+  --brand-primary-light: 32 100% 65%;     /* Lighter orange */
+  --brand-secondary: 210 20% 15%;         /* Dark gray */
+  --brand-accent: 142 76% 36%;            /* Success green */
+  
+  /* Enhanced color palette for organization */
+  --color-blue: 210 100% 55%;             /* Blue for orders */
+  --color-blue-light: 210 100% 65%;       /* Light blue */
+  --color-purple: 270 80% 60%;            /* Purple for inventory */
+  --color-purple-light: 270 80% 70%;      /* Light purple */
+  --color-teal: 180 75% 45%;              /* Teal for analytics */
+  --color-teal-light: 180 75% 55%;        /* Light teal */
+  --color-emerald: 160 75% 45%;           /* Emerald for customers */
+  --color-emerald-light: 160 75% 55%;     /* Light emerald */
+  
+  /* Business metric colors */
+  --profit-positive: 142 76% 36%;         /* Green for profit */
+  --profit-negative: 0 84% 60%;           /* Red for loss */
+  --revenue-color: 24 100% 60%;           /* Orange for revenue */
+  --expense-color: 0 84% 60%;             /* Red for expenses */
+  
+  /* Status colors */
+  --status-active: 142 76% 36%;           /* Green */
+  --status-pending: 45 93% 47%;           /* Yellow */
+  --status-sold: 24 100% 60%;             /* Orange */
+  --status-inactive: 210 10% 40%;         /* Gray */
+  
+  /* Enhanced gradients with new colors */
+  --gradient-hero: linear-gradient(135deg, hsl(var(--brand-primary)) 0%, hsl(32 100% 65%) 100%);
+  --gradient-card: linear-gradient(135deg, hsl(var(--card)) 0%, hsl(210 15% 12%) 100%);
+  --gradient-success: linear-gradient(135deg, hsl(var(--profit-positive)) 0%, hsl(142 76% 45%) 100%);
+  --gradient-danger: linear-gradient(135deg, hsl(var(--profit-negative)) 0%, hsl(0 84% 70%) 100%);
+  --gradient-orange: linear-gradient(135deg, hsl(var(--brand-primary)) 0%, hsl(32 100% 70%) 100%);
+  --gradient-blue: linear-gradient(135deg, hsl(var(--color-blue)) 0%, hsl(var(--color-blue-light)) 100%);
+  --gradient-purple: linear-gradient(135deg, hsl(var(--color-purple)) 0%, hsl(var(--color-purple-light)) 100%);
+  --gradient-teal: linear-gradient(135deg, hsl(var(--color-teal)) 0%, hsl(var(--color-teal-light)) 100%);
+  --gradient-emerald: linear-gradient(135deg, hsl(var(--color-emerald)) 0%, hsl(var(--color-emerald-light)) 100%);
+  
+  /* Logo gradients */
+  --gradient-logo: linear-gradient(135deg, hsl(0 0% 0%) 0%, hsl(0 0% 15%) 100%);
+  
+  /* Shadows with orange glow */
+  --shadow-card: 0 4px 6px -1px hsl(var(--brand-primary) / 0.1);
+  --shadow-widget: 0 10px 15px -3px hsl(var(--brand-primary) / 0.15);
+  --shadow-floating: 0 25px 50px -12px hsl(var(--brand-primary) / 0.3);
+  --shadow-orange-glow: 0 0 40px hsl(var(--brand-primary) / 0.2);
+  
+  /* Animation */
+  --transition-smooth: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  --transition-bounce: all 0.5s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+}
+
+@layer base {
+  :root {
+    /* Light mode - keeping for reference but defaulting to dark */
+    --background: 210 20% 8%;
+    --foreground: 210 20% 95%;
+
+    --card: 210 20% 10%;
+    --card-foreground: 210 20% 95%;
+
+    --popover: 210 20% 10%;
+    --popover-foreground: 210 20% 95%;
+
+    --primary: 24 100% 60%;
+    --primary-foreground: 210 20% 8%;
+
+    --secondary: 210 20% 15%;
+    --secondary-foreground: 210 20% 85%;
+
+    --muted: 210 20% 12%;
+    --muted-foreground: 210 10% 60%;
+
+    --accent: 210 20% 15%;
+    --accent-foreground: 210 20% 85%;
+
+    --destructive: 0 84% 60%;
+    --destructive-foreground: 210 20% 95%;
+
+    --border: 210 20% 18%;
+    --input: 210 20% 15%;
+    --ring: 24 100% 60%;
+
+    --radius: 0.75rem;
+
+    --sidebar-background: 210 25% 6%;
+    --sidebar-foreground: 210 20% 85%;
+    --sidebar-primary: 24 100% 60%;
+    --sidebar-primary-foreground: 210 20% 8%;
+    --sidebar-accent: 210 20% 12%;
+    --sidebar-accent-foreground: 210 20% 85%;
+    --sidebar-border: 210 20% 15%;
+    --sidebar-ring: 24 100% 60%;
+  }
+
+  .dark {
+    /* Already dark by default */
+    --background: 210 20% 8%;
+    --foreground: 210 20% 95%;
+
+    --card: 210 20% 10%;
+    --card-foreground: 210 20% 95%;
+
+    --popover: 210 20% 10%;
+    --popover-foreground: 210 20% 95%;
+
+    --primary: 24 100% 60%;
+    --primary-foreground: 210 20% 8%;
+
+    --secondary: 210 20% 15%;
+    --secondary-foreground: 210 20% 85%;
+
+    --muted: 210 20% 12%;
+    --muted-foreground: 210 10% 60%;
+
+    --accent: 210 20% 15%;
+    --accent-foreground: 210 20% 85%;
+
+    --destructive: 0 84% 60%;
+    --destructive-foreground: 210 20% 95%;
+
+    --border: 210 20% 18%;
+    --input: 210 20% 15%;
+    --ring: 24 100% 60%;
+    
+    --sidebar-background: 210 25% 6%;
+    --sidebar-foreground: 210 20% 85%;
+    --sidebar-primary: 24 100% 60%;
+    --sidebar-primary-foreground: 210 20% 8%;
+    --sidebar-accent: 210 20% 12%;
+    --sidebar-accent-foreground: 210 20% 85%;
+    --sidebar-border: 210 20% 15%;
+    --sidebar-ring: 24 100% 60%;
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+
+  body {
+    @apply bg-background text-foreground;
+  }
+}
