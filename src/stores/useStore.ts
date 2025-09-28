@@ -57,6 +57,7 @@ export interface Customer {
   totalPurchases: number;
   lastPurchase: string;
   notes?: string;
+  image?: string;
 }
 
 interface StoreState {

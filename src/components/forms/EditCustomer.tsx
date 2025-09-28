@@ -5,6 +5,7 @@ import * as z from "zod";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
+import { Upload, X } from "lucide-react";
 import {
   Dialog,
   DialogContent,
@@ -30,6 +31,7 @@ const editCustomerSchema = z.object({
   phone: z.string().optional(),
   platform: z.string().min(1, "Platform is required"),
   notes: z.string().optional(),
+  image: z.string().optional(),
 });
 
 type EditCustomerFormData = z.infer<typeof editCustomerSchema>;
@@ -42,6 +44,7 @@ interface EditCustomerProps {
 export function EditCustomer({ children, customer }: EditCustomerProps) {
   const [open, setOpen] = useState(false);
   const { updateCustomer } = useStore();
+  const [customerImage, setCustomerImage] = useState<string>(customer.image || "");
 
   const form = useForm<EditCustomerFormData>({
     resolver: zodResolver(editCustomerSchema),
@@ -51,8 +54,27 @@ export function EditCustomer({ children, customer }: EditCustomerProps) {
       phone: customer.phone || "",
       platform: customer.platform,
       notes: customer.notes || "",
+      image: customer.image || "",
     },
   });
+
+  const handleImageUpload = (e: React.ChangeEvent<HTMLInputElement>) => {
+    const file = e.target.files?.[0];
+    if (file) {
+      const reader = new FileReader();
+      reader.onload = (e) => {
+        const result = e.target?.result as string;
+        setCustomerImage(result);
+        form.setValue('image', result);
+      };
+      reader.readAsDataURL(file);
+    }
+  };
+
+  const removeImage = () => {
+    setCustomerImage("");
+    form.setValue('image', "");
+  };
 
   const onSubmit = (data: EditCustomerFormData) => {
     updateCustomer(customer.id, {
@@ -60,6 +82,7 @@ export function EditCustomer({ children, customer }: EditCustomerProps) {
       email: data.email || undefined,
       phone: data.phone || undefined,
       notes: data.notes || undefined,
+      image: data.image || undefined,
     });
     
     toast.success("Customer updated successfully!");
@@ -157,6 +180,43 @@ export function EditCustomer({ children, customer }: EditCustomerProps) {
                 </FormItem>
               )}
             />
+
+            {/* Customer Image */}
+            <div className="space-y-2">
+              <label className="text-sm font-medium">Kundenbild (optional)</label>
+              {customerImage ? (
+                <div className="relative inline-block">
+                  <img 
+                    src={customerImage} 
+                    alt="Customer preview" 
+                    className="w-24 h-24 object-cover rounded-lg border"
+                  />
+                  <Button
+                    type="button"
+                    variant="destructive"
+                    size="icon"
+                    className="absolute -top-2 -right-2 h-6 w-6"
+                    onClick={removeImage}
+                  >
+                    <X className="h-3 w-3" />
+                  </Button>
+                </div>
+              ) : (
+                <div className="flex items-center justify-center w-24 h-24 border-2 border-dashed border-muted-foreground/25 rounded-lg">
+                  <label htmlFor="customer-image-edit" className="cursor-pointer flex flex-col items-center">
+                    <Upload className="h-6 w-6 text-muted-foreground" />
+                    <span className="text-xs text-muted-foreground mt-1">Upload</span>
+                    <input
+                      id="customer-image-edit"
+                      type="file"
+                      accept="image/*"
+                      onChange={handleImageUpload}
+                      className="hidden"
+                    />
+                  </label>
+                </div>
+              )}
+            </div>
 
             <div className="flex justify-end gap-3">
               <Button type="button" variant="outline" onClick={() => setOpen(false)}>

@@ -7,6 +7,7 @@ import {
   TrendingUp, 
   Users, 
   BarChart3,
+  Settings,
   Menu,
   X
 } from "lucide-react";
@@ -21,6 +22,7 @@ const navigation = [
   { name: "Sales", href: "/sales", icon: TrendingUp },
   { name: "Customers", href: "/customers", icon: Users },
   { name: "Analytics", href: "/analytics", icon: BarChart3 },
+  { name: "Settings", href: "/settings", icon: Settings },
 ];
 
 export function Navigation() {

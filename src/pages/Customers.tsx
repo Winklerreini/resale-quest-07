@@ -124,9 +124,17 @@ export default function Customers() {
                 <CardContent className="p-4">
                   <div className="flex items-start justify-between mb-4">
                     <div className="flex items-center gap-3">
-                      <div className="w-10 h-10 bg-gradient-orange rounded-full flex items-center justify-center">
-                        <User className="h-5 w-5 text-white" />
-                      </div>
+                      {customer.image ? (
+                        <img 
+                          src={customer.image} 
+                          alt={customer.name}
+                          className="w-10 h-10 rounded-full object-cover border-2 border-brand-primary/20"
+                        />
+                      ) : (
+                        <div className="w-10 h-10 bg-gradient-orange rounded-full flex items-center justify-center">
+                          <User className="h-5 w-5 text-white" />
+                        </div>
+                      )}
                       <div>
                         <h3 className="font-semibold">{customer.name}</h3>
                         {customer.email && (
@@ -207,9 +215,17 @@ export default function Customers() {
             <Card>
               <CardHeader>
                 <CardTitle className="flex items-center gap-3">
-                  <div className="w-12 h-12 bg-gradient-orange rounded-full flex items-center justify-center">
-                    <User className="h-6 w-6 text-white" />
-                  </div>
+                  {selectedCustomer.image ? (
+                    <img 
+                      src={selectedCustomer.image} 
+                      alt={selectedCustomer.name}
+                      className="w-12 h-12 rounded-full object-cover border-2 border-brand-primary/20"
+                    />
+                  ) : (
+                    <div className="w-12 h-12 bg-gradient-orange rounded-full flex items-center justify-center">
+                      <User className="h-6 w-6 text-white" />
+                    </div>
+                  )}
                   <div>
                     <span>{selectedCustomer.name}</span>
                     <Badge variant="outline" className="ml-2 text-xs">
