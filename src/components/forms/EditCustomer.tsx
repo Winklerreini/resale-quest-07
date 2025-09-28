@@ -73,9 +73,9 @@ export function EditCustomer({ children, customer }: EditCustomerProps) {
       </DialogTrigger>
       <DialogContent className="sm:max-w-[500px]">
         <DialogHeader>
-          <DialogTitle>Edit Customer</DialogTitle>
+          <DialogTitle>Kunde bearbeiten</DialogTitle>
           <DialogDescription>
-            Update customer information.
+            Kundeninformationen aktualisieren.
           </DialogDescription>
         </DialogHeader>
         
@@ -86,7 +86,7 @@ export function EditCustomer({ children, customer }: EditCustomerProps) {
               name="name"
               render={({ field }) => (
                 <FormItem>
-                  <FormLabel>Customer Name</FormLabel>
+                  <FormLabel>Kundenname</FormLabel>
                   <FormControl>
                     <Input placeholder="John Doe" {...field} />
                   </FormControl>
@@ -101,7 +101,7 @@ export function EditCustomer({ children, customer }: EditCustomerProps) {
                 name="email"
                 render={({ field }) => (
                   <FormItem>
-                    <FormLabel>Email (optional)</FormLabel>
+                    <FormLabel>E-Mail (optional)</FormLabel>
                     <FormControl>
                       <Input placeholder="john@example.com" {...field} />
                     </FormControl>
@@ -115,7 +115,7 @@ export function EditCustomer({ children, customer }: EditCustomerProps) {
                 name="phone"
                 render={({ field }) => (
                   <FormItem>
-                    <FormLabel>Phone (optional)</FormLabel>
+                    <FormLabel>Telefon (optional)</FormLabel>
                     <FormControl>
                       <Input placeholder="+49 123 456789" {...field} />
                     </FormControl>
@@ -130,7 +130,7 @@ export function EditCustomer({ children, customer }: EditCustomerProps) {
               name="platform"
               render={({ field }) => (
                 <FormItem>
-                  <FormLabel>Platform</FormLabel>
+                  <FormLabel>Plattform</FormLabel>
                   <FormControl>
                     <Input placeholder="eBay, Instagram, etc." {...field} />
                   </FormControl>
@@ -144,10 +144,10 @@ export function EditCustomer({ children, customer }: EditCustomerProps) {
               name="notes"
               render={({ field }) => (
                 <FormItem>
-                  <FormLabel>Notes (optional)</FormLabel>
+                  <FormLabel>Notizen (optional)</FormLabel>
                   <FormControl>
                     <Textarea 
-                      placeholder="Any additional notes about this customer..."
+                      placeholder="Zusätzliche Notizen zu diesem Kunden..."
                       className="resize-none"
                       rows={3}
                       {...field}
@@ -160,10 +160,10 @@ export function EditCustomer({ children, customer }: EditCustomerProps) {
 
             <div className="flex justify-end gap-3">
               <Button type="button" variant="outline" onClick={() => setOpen(false)}>
-                Cancel
+                Abbrechen
               </Button>
               <Button type="submit" variant="success">
-                Update Customer
+                Kunde aktualisieren
               </Button>
             </div>
           </form>

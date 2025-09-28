@@ -13,8 +13,10 @@ import {
   Phone,
   Plus,
   Trash2,
-  User
+  User,
+  Edit3
 } from "lucide-react";
+import { EditCustomer } from "@/components/forms/EditCustomer";
 
 export default function Customers() {
   const { customers, sales, deleteCustomer } = useStore();
@@ -157,18 +159,31 @@ export default function Customers() {
                     </div>
                   </div>
 
-                  <Button 
-                    size="sm" 
-                    variant="outline"
-                    onClick={(e) => {
-                      e.stopPropagation();
-                      handleDeleteCustomer(customer.id);
-                    }}
-                    className="mt-3 flex items-center gap-1"
-                  >
-                    <Trash2 className="h-3 w-3" />
-                    Delete
-                  </Button>
+                  <div className="mt-3 flex gap-2">
+                    <EditCustomer customer={customer}>
+                      <Button 
+                        size="sm" 
+                        variant="outline"
+                        onClick={(e) => e.stopPropagation()}
+                        className="flex items-center gap-1 flex-1"
+                      >
+                        <Edit3 className="h-3 w-3" />
+                        Bearbeiten
+                      </Button>
+                    </EditCustomer>
+                    <Button 
+                      size="sm" 
+                      variant="destructive"
+                      onClick={(e) => {
+                        e.stopPropagation();
+                        handleDeleteCustomer(customer.id);
+                      }}
+                      className="flex items-center gap-1"
+                    >
+                      <Trash2 className="h-3 w-3" />
+                      Löschen
+                    </Button>
+                  </div>
                 </CardContent>
               </Card>
             )) : (
@@ -270,14 +285,22 @@ export default function Customers() {
                   </div>
                 </div>
 
-                <Button 
-                  variant="destructive" 
-                  className="w-full"
-                  onClick={() => handleDeleteCustomer(selectedCustomer.id)}
-                >
-                  <Trash2 className="h-4 w-4 mr-2" />
-                  Delete Customer
-                </Button>
+                <div className="flex gap-3">
+                  <EditCustomer customer={selectedCustomer}>
+                    <Button variant="outline" className="flex-1">
+                      <Edit3 className="h-4 w-4 mr-2" />
+                      Kunde bearbeiten
+                    </Button>
+                  </EditCustomer>
+                  <Button 
+                    variant="destructive" 
+                    className="flex-1"
+                    onClick={() => handleDeleteCustomer(selectedCustomer.id)}
+                  >
+                    <Trash2 className="h-4 w-4 mr-2" />
+                    Kunde löschen
+                  </Button>
+                </div>
               </CardContent>
             </Card>
           ) : (

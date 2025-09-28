@@ -7,6 +7,7 @@ import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import { BrandInput } from "@/components/ui/brand-input";
 import { CategorySelect } from "@/components/ui/category-select";
+import { SizeSelect } from "@/components/ui/size-select";
 import { NumberInput } from "@/components/ui/number-input";
 import {
   Dialog,
@@ -144,9 +145,14 @@ export function EditInventoryItem({ children, item }: EditInventoryItemProps) {
                 name="size"
                 render={({ field }) => (
                   <FormItem>
-                    <FormLabel>Size</FormLabel>
+                    <FormLabel>Größe</FormLabel>
                     <FormControl>
-                      <Input placeholder="e.g., M, 32, 9.5" {...field} />
+                      <SizeSelect
+                        value={field.value}
+                        onChange={field.onChange}
+                        category={form.watch("category")}
+                        placeholder="Größe auswählen..."
+                      />
                     </FormControl>
                     <FormMessage />
                   </FormItem>

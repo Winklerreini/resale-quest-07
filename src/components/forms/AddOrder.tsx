@@ -30,6 +30,7 @@ import { Button } from "@/components/ui/button";
 import { NumberInput } from "@/components/ui/number-input";
 import { BrandInput } from "@/components/ui/brand-input";
 import { CategorySelect } from "@/components/ui/category-select";
+import { SizeSelect } from "@/components/ui/size-select";
 import { useToast } from "@/hooks/use-toast";
 import { useStore } from "@/stores/useStore";
 import { Plus, Trash2 } from "lucide-react";
@@ -333,9 +334,14 @@ export function AddOrder({ children }: AddOrderProps) {
                         name={`items.${index}.size`}
                         render={({ field }) => (
                           <FormItem>
-                            <FormLabel>Size</FormLabel>
+                            <FormLabel>Größe</FormLabel>
                             <FormControl>
-                              <Input placeholder="42, L, 32/34" {...field} />
+                              <SizeSelect
+                                value={field.value}
+                                onChange={field.onChange}
+                                category={form.watch(`items.${index}.category`)}
+                                placeholder="Größe auswählen..."
+                              />
                             </FormControl>
                             <FormMessage />
                           </FormItem>
